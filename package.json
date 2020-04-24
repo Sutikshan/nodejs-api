@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-api",
+  "version": "1.0.0",
+  "description": "Simple NodeJS REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sutikshan/nodejs-api.git"
+  },
+  "author": "Anand",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sutikshan/nodejs-api/issues"
+  },
+  "homepage": "https://github.com/Sutikshan/nodejs-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "engines": {
+    "node": ">=12.16.0",
+    "npm": ">=6.13.4"
+  }
+}
