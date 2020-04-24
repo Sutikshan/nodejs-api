@@ -4,7 +4,7 @@ const { getEnvVar } = require('../getEnvVar');
 const getUser = async (req, res) => {
   const token = getEnvVar('API_TOKEN');
   const baseUrl = getEnvVar('API_BASE_URL');
-  const url = `${baseUrl}/api/Exercise/exercise1`;
+  const url = `${baseUrl}/api/Exercise/exercise1?token=`;
 
   try {
     const response = await fetch(url, {

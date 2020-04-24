@@ -1,0 +1,16 @@
+{
+  "extends": ["eslint:recommended", "prettier", "plugin:node/recommended"],
+  "globals": {},
+  "rules": {
+    "no-console": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "ecmaFeatures": {},
+    "env": {
+      "amd": true,
+      "node": true,
+      "commonjs": true
+    }
+  }
+}
