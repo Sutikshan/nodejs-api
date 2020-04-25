@@ -3,9 +3,9 @@
 
 const mapSort = (list, compareFunction, fieldName) => {
   return list
-    .map((product, index) => ({ index, value: product[fieldName] }))
+    .map((item, index) => ({ index, value: item[fieldName] }))
     .sort(compareFunction)
-    .map((item) => productsData[item.index]);
+    .map((item) => list[item.index]);
 };
 
 module.exports = { mapSort };

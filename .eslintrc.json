@@ -1,6 +1,12 @@
 {
-  "extends": ["eslint:recommended", "prettier", "plugin:node/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:node/recommended",
+    "plugin:jest/recommended"
+  ],
   "globals": {},
+  "plugins": ["jest"],
   "rules": {
     "no-console": "warn"
   },
@@ -10,7 +16,17 @@
     "env": {
       "amd": true,
       "node": true,
-      "commonjs": true
+      "commonjs": true,
+      "jest/globals": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": "**/*.spec.js",
+      "rules": {
+        "node/no-unpublished-require": 0,
+        "node/no-missing-require": 0
+      }
+    }
+  ]
 }

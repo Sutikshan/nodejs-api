@@ -4,8 +4,8 @@
   "description": "Simple NodeJS REST API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ./src/index.js",
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,17 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-node": "^11.1.0",
-    "prettier": "^2.0.5"
+    "fetch-mock-jest": "^1.2.7",
+    "jest": "^25.4.0",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.5",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "dotenv/config"
+    ]
   }
 }
