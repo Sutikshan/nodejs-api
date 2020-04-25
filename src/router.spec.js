@@ -10,6 +10,9 @@ const fetchMock = require('node-fetch');
 describe('router', () => {
   const app = express();
   app.use('/api', router);
+  afterAll(() => {
+    fetchMock.mockReset();
+  });
 
   describe('/user', () => {
     it('should return the name and token', () => {
@@ -33,7 +36,6 @@ describe('router', () => {
       { name: 'productC', price: 5, quantity: 0 },
     ];
     fetchMock.get(apiProductsUrl, mockProductsResponse, {
-      method: 'GET',
       headers: {
         Accept: 'application/json',
       },
@@ -57,14 +59,9 @@ describe('router', () => {
       },
     ];
     fetchMock.get(apiShoppingHistoryUrl, mockShoppingHistoryResponse, {
-      method: 'GET',
       headers: {
         Accept: 'application/json',
       },
-    });
-
-    afterAll(() => {
-      fetchMock.mockReset();
     });
 
     it('should return the 400 if unknown sortOption is supplied', () => {
@@ -123,6 +120,27 @@ describe('router', () => {
           expect(res.body[0].name).toEqual('productB');
           expect(res.body[1].name).toEqual('productC');
           expect(res.body[2].name).toEqual('productA');
+        });
+    });
+  });
+
+  describe('/trolleyTotal', () => {
+    it('should accept shopping trolley details and return total after applying special', () => {
+      const apiTrolleyCalculatorUrl = apiUrlBuilder(
+        WooliesApiPaths.API_TROLLEY_TOTAL_CALCULATOR
+      );
+      const mockTrolleyTotalResponse = { total: 10 };
+
+      fetchMock.post(apiTrolleyCalculatorUrl, mockTrolleyTotalResponse, {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      return request(app)
+        .post('/api/trolleyTotal')
+        .then((res) => {
+          expect(res.body).toEqual({ total: 10 });
         });
     });
   });
