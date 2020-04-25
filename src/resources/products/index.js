@@ -1,6 +1,6 @@
 const { mapSort } = require('../../utils/mapsort');
-const { fetchProducts } = require('../../externalApi/products');
-const { fetchShoppingHistory } = require('../../externalApi/shoppingHistory');
+const { fetchProducts } = require('../../services/products');
+const { fetchShoppingHistory } = require('../../services/shoppingHistory');
 const SortParamEnum = require('./sortParamEnum');
 const {
   getProductCompareFunction,

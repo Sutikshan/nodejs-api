@@ -1,4 +1,4 @@
-const { fetchTrolleyTotal } = require('../externalApi/trolley');
+const { fetchTrolleyTotal } = require('../services/trolley');
 
 const getTrolleyTotal = async (req, res) => {
   const trolleyProducts = req.body;
