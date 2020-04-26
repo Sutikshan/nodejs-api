@@ -1,8 +1,8 @@
 const request = require('supertest');
 const express = require('express');
 const router = require('./router');
-const WooliesApiPaths = require('./externalApi/wooliesApiPaths');
-const apiUrlBuilder = require('./externalApi/apiUrlBuilder');
+const WooliesApiPaths = require('./services/wooliesApiPaths');
+const apiUrlBuilder = require('./services/apiUrlBuilder');
 
 jest.mock('node-fetch', () => require('fetch-mock-jest').sandbox());
 const fetchMock = require('node-fetch');
