@@ -1,6 +1,11 @@
 # nodejs-api
 
-Simple nodejs api
+This Repo has following branches
+* *master* - expressJS implementation (for ease of code-review as azure adds lot of boiler-plate config).
+* *azure-functions* - Azure serverless implementation deployed here - https://woolies-user.azurewebsites.net/api to test at following path
+http://dev-wooliesx-recruitment.azurewebsites.net/exercise
+
+Both the branches have the following test coverage.
 
 ## Curent Test case coverage
 
