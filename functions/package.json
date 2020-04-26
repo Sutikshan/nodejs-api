@@ -1,0 +1,20 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "jest --watch"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "jest": "^25.4.0",
+    "fetch-mock-jest": "^1.2.7"
+  },
+  "engines": {
+    "node": ">=12.16.0",
+    "npm": ">=6.13.4"
+  }
+}

@@ -3,7 +3,7 @@ const {
   compareNumberDescending,
   compareNameAscending,
   compareNameDescending,
-} = require('../../utils/compareFunctions');
+} = require('../utils/compareFunctions');
 const SortParamEnum = require('./sortParamEnum');
 
 const getProductCompareFunction = (sortOption) => {

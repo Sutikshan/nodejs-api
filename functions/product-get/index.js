@@ -1,6 +1,6 @@
-const { mapSort } = require('../../utils/mapsort');
-const { fetchProducts } = require('../../services/products');
-const { fetchShoppingHistory } = require('../../services/shoppingHistory');
+const { mapSort } = require('../utils/mapsort');
+const { fetchProducts } = require('../services/products');
+const { fetchShoppingHistory } = require('../services/shoppingHistory');
 const SortParamEnum = require('./sortParamEnum');
 const {
   getProductCompareFunction,
@@ -8,11 +8,11 @@ const {
 } = require('./productSortUtils');
 const findProductPopularity = require('./findProductPopularity');
 
-const getProducts = async (req, res) => {
+module.exports = async (context, req) => {
   const sortOption = req.query.sortOption;
 
   if (!Object.values(SortParamEnum).includes(sortOption)) {
-    res.status(400).send('Invalid sortOption');
+    context.res = { status: 400, body: { message: 'Invalid sortOption' } };
     return;
   }
 
@@ -24,7 +24,11 @@ const getProducts = async (req, res) => {
   const compareFunction = getProductCompareFunction(sortOption);
   const sortField = getProductSortField(sortOption);
 
-  res.json(mapSort(prductsList, compareFunction, sortField));
+  const body = mapSort(prductsList, compareFunction, sortField).map(
+    (product) => {
+      const { name, price, quantity } = product;
+      return { name, price, quantity };
+    }
+  );
+  context.res = { body };
 };
-
-module.exports = { getProducts };
