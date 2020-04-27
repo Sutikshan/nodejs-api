@@ -30,7 +30,7 @@ describe('/sort?sortOption=<value>', () => {
     {
       customerId: 1,
       products: [
-        { name: 'productB', price: 20, quantity: 1 },
+        { name: 'productB', price: 200, quantity: 100 },
         { name: 'productA', price: 10, quantity: 2 },
         { name: 'productC', price: 30, quantity: 3 },
       ],

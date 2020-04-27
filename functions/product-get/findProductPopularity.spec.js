@@ -29,6 +29,21 @@ describe('findProductPopularity', () => {
           {
             name: 'productC',
             price: 10,
+            quantity: 1000,
+          },
+        ],
+      },
+      {
+        customerId: 3,
+        products: [
+          {
+            name: 'productA',
+            price: 10,
+            quantity: 10,
+          },
+          {
+            name: 'productB',
+            price: 10,
             quantity: 10,
           },
         ],
@@ -47,8 +62,8 @@ describe('findProductPopularity', () => {
       (product) => product.name === 'productC'
     );
 
-    expect(productACount.count).toEqual(2);
-    expect(productBCount.count).toEqual(1);
-    expect(productCCount.count).toEqual(1);
+    expect(productACount.count).toEqual(30);
+    expect(productBCount.count).toEqual(20);
+    expect(productCCount.count).toEqual(1000);
   });
 });
