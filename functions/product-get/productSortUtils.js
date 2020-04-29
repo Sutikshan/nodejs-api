@@ -31,17 +31,19 @@ const PriceSortOptions = [SortParamEnum.Low, SortParamEnum.High];
 const NameSortOptions = [SortParamEnum.Ascending, SortParamEnum.Descending];
 
 const getProductSortField = (sortOption) => {
+  const primarySortFunction = getProductCompareFunction(sortOption);
+
   if (PriceSortOptions.includes(sortOption)) {
-    return 'price';
+    return { price: primarySortFunction, name: compareNameAscending };
   }
 
   if (NameSortOptions.includes(sortOption)) {
-    return 'name';
+    return { name: primarySortFunction, price: compareNumberAscending };
   }
 
   if (sortOption === SortParamEnum.Recommended) {
-    return 'count';
+    return { count: primarySortFunction, name: compareNameAscending };
   }
 };
 
-module.exports = { getProductCompareFunction, getProductSortField };
+module.exports = { getProductSortField };

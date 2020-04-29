@@ -1,13 +1,14 @@
-const compareNumberAscending = (a, b) => a.value - b.value;
-const compareNumberDescending = (a, b) => b.value - a.value;
+const compareNumberAscending = (a, b) => a - b;
+const compareNumberDescending = (a, b) => b - a;
 
 const compareNameAscending = (a, b) => {
-  const nameA = a.value.toUpperCase(); // ignore upper and lowercase
-  const nameB = b.value.toUpperCase(); // ignore upper and lowercase
+  const nameA = a.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.toUpperCase(); // ignore upper and lowercase
 
   if (nameA < nameB) {
     return -1;
   }
+
   if (nameA > nameB) {
     return 1;
   }
@@ -17,12 +18,13 @@ const compareNameAscending = (a, b) => {
 };
 
 const compareNameDescending = (a, b) => {
-  const nameA = a.value.toUpperCase(); // ignore upper and lowercase
-  const nameB = b.value.toUpperCase(); // ignore upper and lowercase
+  const nameA = a.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.toUpperCase(); // ignore upper and lowercase
 
   if (nameA > nameB) {
     return -1;
   }
+
   if (nameA < nameB) {
     return 1;
   }

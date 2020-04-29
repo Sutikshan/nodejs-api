@@ -2,10 +2,7 @@ const { mapSort } = require('../utils/mapsort');
 const { fetchProducts } = require('../services/products');
 const { fetchShoppingHistory } = require('../services/shoppingHistory');
 const SortParamEnum = require('./sortParamEnum');
-const {
-  getProductCompareFunction,
-  getProductSortField,
-} = require('./productSortUtils');
+const { getProductSortField } = require('./productSortUtils');
 const findProductPopularity = require('./findProductPopularity');
 
 module.exports = async (context, req) => {
@@ -21,14 +18,12 @@ module.exports = async (context, req) => {
       ? findProductPopularity(await fetchShoppingHistory())
       : await fetchProducts();
 
-  const compareFunction = getProductCompareFunction(sortOption);
-  const sortField = getProductSortField(sortOption);
+  const sortFieldMeta = getProductSortField(sortOption);
 
-  const body = mapSort(prductsList, compareFunction, sortField).map(
-    (product) => {
-      const { name, price, quantity } = product;
-      return { name, price, quantity };
-    }
-  );
+  const body = mapSort(prductsList, sortFieldMeta).map((product) => {
+    const { name, price, quantity } = product;
+    return { name, price, quantity };
+  });
+
   context.res = { body };
 };

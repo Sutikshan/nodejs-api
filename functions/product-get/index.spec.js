@@ -31,7 +31,7 @@ describe('/sort?sortOption=<value>', () => {
       customerId: 1,
       products: [
         { name: 'productB', price: 200, quantity: 100 },
-        { name: 'productA', price: 10, quantity: 2 },
+        { name: 'productA', price: 10, quantity: 5 },
         { name: 'productC', price: 30, quantity: 3 },
       ],
     },
@@ -97,7 +97,7 @@ describe('/sort?sortOption=<value>', () => {
     await httpFunction(context, req);
 
     expect(context.res.body[0].name).toEqual('productB');
-    expect(context.res.body[1].name).toEqual('productC');
-    expect(context.res.body[2].name).toEqual('productA');
+    expect(context.res.body[1].name).toEqual('productA');
+    expect(context.res.body[2].name).toEqual('productC');
   });
 });
