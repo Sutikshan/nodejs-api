@@ -13,17 +13,22 @@ module.exports = async (context, req) => {
     return;
   }
 
-  const prductsList =
-    sortOption === SortParamEnum.Recommended
-      ? findProductPopularity(await fetchShoppingHistory())
-      : await fetchProducts();
+  try {
+    const prductsList =
+      sortOption === SortParamEnum.Recommended
+        ? findProductPopularity(await fetchShoppingHistory())
+        : await fetchProducts();
 
-  const sortFieldMeta = getProductSortField(sortOption);
+    const sortFieldMeta = getProductSortField(sortOption);
 
-  const body = mapSort(prductsList, sortFieldMeta).map((product) => {
-    const { name, price, quantity } = product;
-    return { name, price, quantity };
-  });
+    const body = mapSort(prductsList, sortFieldMeta).map((product) => {
+      const { name, price, quantity } = product;
+      return { name, price, quantity };
+    });
 
-  context.res = { body };
+    context.res = { body };
+  } catch (exc) {
+    context.log(exc.message);
+    context.res = { body: { message: 'Server error' }, status: 500 };
+  }
 };

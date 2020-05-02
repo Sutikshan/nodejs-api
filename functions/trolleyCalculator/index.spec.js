@@ -52,7 +52,6 @@ describe('/trolleyTotal', () => {
     };
 
     await httpFunction(context, req);
-
     expect(context.res.body.total).toEqual(10);
   });
 });
